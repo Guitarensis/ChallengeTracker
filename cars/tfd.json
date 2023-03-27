@@ -1,11 +1,33 @@
-import json
-from dictionary import gear_ratios
-
-car_data = {
-    "car_name": "tfd",
-    "gear_ratios": gear_ratios
+{
+  "gear_ratios": {
+    "gear_ratio_set_1": [
+      "expected et",
+      0,
+      "gear2",
+      0,
+      "gear3",
+      0,
+      "gear4",
+      0,
+      "gear5",
+      0,
+      "gear6",
+      0,
+      "final",
+      0,
+      "expected et",
+      0
+    ]
+  },
+  "gear_ratios_stats": {
+    "gear_ratio_set_1": [
+      "rt",
+      "et",
+      "mph",
+      "rt diff",
+      "dial in diff",
+      "fouls",
+      "races ran"
+    ]
+  }
 }
-
-data = {"car_data": [car_data]}
-
-json_data = json.dumps(data)

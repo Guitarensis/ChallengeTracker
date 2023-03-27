@@ -1,8 +1,0 @@
-import tkinter as tk
-from globals import root
-
-# create title bar frame
-title_bar = tk.Frame(root, bg='gray', relief='raised', bd=2)
-
-# add title bar to root window using grid
-title_bar.grid(row=0, column=0, columnspan=2, sticky="ew")

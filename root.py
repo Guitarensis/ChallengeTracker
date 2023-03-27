@@ -1,7 +1,7 @@
 from typing import Optional, Callable
 import tkinter as tk
 import tkinter.messagebox as messagebox
-from all_colors import colors
+from allcolors import colors
 import traceback
 
 root: Optional[tk.Tk] = None

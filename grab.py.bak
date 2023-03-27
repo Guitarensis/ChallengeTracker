@@ -1,0 +1,15 @@
+import os
+from main import selected_car
+from root import root
+from tkinter import ttk
+
+# Call the get_car function to initialize the car dropdown
+car_path, car_names = get_car()
+
+# Create the car dropdown
+car_dropdown = ttk.Combobox(root, values=car_names)
+car_dropdown.set("Select Car")
+car_dropdown.grid(row=1, column=2)
+
+# Bind the car dropdown to the get_car function
+car_dropdown.bind("<<ComboboxSelected>>", selected_car)

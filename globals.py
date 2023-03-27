@@ -14,3 +14,21 @@ avg_mph_output = tk.Entry(root, state='disabled')
 app_dir = os.path.dirname(os.path.abspath(__file__))  # get the directory of the current script
 
 cars_dir = os.path.join(app_dir, 'cars')  # the directory containing the JSON files for each car
+
+car_name = {"challenger",
+            "charger",
+            "civic",
+            "ftype",
+            "funnycar",
+            "lancer",
+            "mopar",
+            "mustang",
+            "ram",
+            "rsx",
+            "rx8",
+            "skyline",
+            "srt4",
+            "subaru",
+            "supra",
+            "tfd",
+            "viper"}

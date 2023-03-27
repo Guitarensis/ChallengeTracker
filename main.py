@@ -1,8 +1,7 @@
 from globals import expected_et_entry
 from root import root
 from tkinter import messagebox
-from tkinter import tk
-import psutil
+import tkinter as tk
 import psutil
 import tkinter.ttk as ttk
 
