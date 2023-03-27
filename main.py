@@ -1,12 +1,17 @@
-import os
-import json
-import psutil
-from tkinter import messagebox, font as tkfont
+from globals import expected_et_entry
+from root import root
+from tkinter import messagebox
 from tkinter import tk
+import psutil
+import psutil
 import tkinter.ttk as ttk
-from globals import gear_entries, expected_et_entry, root
-from buttons import *
-from all_colors import colors
+
+
+def check_app_running(app_name):
+    for proc in psutil.process_iter(['name']):
+        if app_name in proc.info['name']:
+            return True
+    return False
 
 def check_required_apps():
     # Check if the required apps are running
@@ -77,7 +82,6 @@ gear_entries = []
 for i in range(6):
     gear_label = tk.Label(root, text=f'Gear {i+1}:')
     gear_entry = tk.Entry(root)
-    entries.append(gear_entry)
     gear_label.grid(row=i+3, column=3)
     gear_entry.grid(row=i+3, column=4)
     print('Created entry fields for gear ratios')

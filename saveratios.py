@@ -1,14 +1,14 @@
-from main import gear_entries, gear_menu_var, gear_ratio_dropdown, gear_options
+from main import gear_entries, gear_menu_var, gear_ratio_dropdown, gear_options, final_entry
+from validate import validate_et
 import json
 import os
 import tkinter as tk
 import tkinter as messagebox
-from globals import root
-from validate import validate_et
+
 
 # Create a function to save the gear ratios to the car_data dictionary.
 def save_ratios(gear_ratios, selected_car):
-    global root
+    global root, expected_et_entry
     # Get the selected car and gear
     selected_gear_set = gear_menu_var.get()
 
@@ -51,10 +51,10 @@ def save_ratios(gear_ratios, selected_car):
         gear_ratio_dropdown['menu'].add_command(label=gear_options[selected_gear_set], command=tk._setit(gear_ratio_dropdown, gear_options[selected_gear_set]))
     except Exception as e:
         messagebox.showerror("Error", f"Failed to update gear ratio dropdown: {e}")
-
-    # Create the Add Ratios, Save Stats, and Clear Stats buttons
-    add_ratio_button = tk.Button(root, text='Add Ratios', command=lambda: save_ratios(gear_ratios))
-    add_ratio_button.grid(row=3, column=11)
-    print('Add Ratio button added')
-except Exception as e:
-    raise ValueError('Error creating Add Ratio button')
+    try:
+        # Create the Add Ratios, Save Stats, and Clear Stats buttons
+        add_ratio_button = tk.Button(root, text='Add Ratios', command=lambda: save_ratios(gear_ratios))
+        add_ratio_button.grid(row=3, column=11)
+        print('Add Ratio button added')
+    except Exception as e:
+        raise ValueError('Error creating Add Ratio button')
