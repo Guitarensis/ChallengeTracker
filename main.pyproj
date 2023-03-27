@@ -1,0 +1,64 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3b05748a-1127-4069-b40f-8adf60e3f5d9</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>main.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.C:\Users\gtaws\StatsApp\ChallengeTracker\ChallengeTracker</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>main</Name>
+    <RootNamespace>ChallengeTracker</RootNamespace>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="add_image.py" />
+    <Compile Include="add_ratios.py" />
+    <Compile Include="all_colors.py" />
+    <Compile Include="app_path.py" />
+    <Compile Include="buttons.py" />
+    <Compile Include="car_path.py" />
+    <Compile Include="clear_stats.py" />
+    <Compile Include="data_path.py" />
+    <Compile Include="dictionary.py" />
+    <Compile Include="font_settings.py" />
+    <Compile Include="globals.py" />
+    <Compile Include="grab.py" />
+    <Compile Include="grab_packet_data.py" />
+    <Compile Include="main.py" />
+    <Compile Include="path.py" />
+    <Compile Include="process.py" />
+    <Compile Include="races_ran.py" />
+    <Compile Include="save_ratios.py" />
+    <Compile Include="save_stats.py" />
+    <Compile Include="show_stats.py" />
+    <Compile Include="titlebar.py" />
+    <Compile Include="validate.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

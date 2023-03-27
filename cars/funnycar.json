@@ -1,0 +1,11 @@
+import json
+from dictionary import gear_ratios
+
+car_data = {
+    "car_name": "funnycar",
+    "gear_ratios": gear_ratios
+}
+
+data = {"car_data": [car_data]}
+
+json_data = json.dumps(data)

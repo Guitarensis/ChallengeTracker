@@ -1,0 +1,14 @@
+import json
+from dictionary import gear_ratios, gear_ratio_stats
+
+data = []
+car_data = {
+    "car_name": "civic",
+    "gear_ratios": gear_ratios,
+    "gear_ratio_stats": gear_ratio_stats
+}
+data.append(car_data)
+json_data = json.dumps({"car_data": data})
+
+with open("civic.json", "w") as file:
+    file.write(json_data)
