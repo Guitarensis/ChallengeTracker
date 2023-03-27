@@ -1,4 +1,6 @@
-from scapy.all import *
+from scapy.layers.l2 import Ether
+from scapy.layers.inet import IP, TCP
+from scapy.sendrecv import sniff
 from process import process_packet
 from tkinter import messagebox
 

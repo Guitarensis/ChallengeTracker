@@ -4,6 +4,7 @@ import os
 import tkinter as tk
 import tkinter as messagebox
 from globals import root
+from validate import validate_et
 
 # Create a function to save the gear ratios to the car_data dictionary.
 def save_ratios(gear_ratios, selected_car):

@@ -1,5 +1,6 @@
 from globals import avg_et_output, avg_mph_output, avg_rt_output, root
 from tkinter import messagebox
+from tkinter import tk
 import json
 
 def clear_stats():

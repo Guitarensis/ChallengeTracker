@@ -1,6 +1,5 @@
-import os
-from car_path import cars
+from globals import cars_dir
 
-selected_car = cars
+selected_car = cars_dir
 
 

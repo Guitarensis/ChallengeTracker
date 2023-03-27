@@ -1,7 +1,13 @@
 from globals import root
 from all_colors import colors
+from tkinter import tk, font as tkfont
+from tkinter.ttk import ttk
+
+colors
+color_ddropdown = None
 
 def font_color_window():
+    global colors, color_dropdown
     font_family = tk.StringVar()
     font_size = tk.StringVar()
     font_color = tk.StringVar()
@@ -28,7 +34,7 @@ def font_color_window():
     # Font color dropdown
     font_color_label = ttk.Label(font_frame, text="Font Color:")
     font_color_label.grid(row=2, column=0, padx=5, pady=5)
-    font_color_options = all_colors
+    font_color_options = colors
     font_color_dropdown = ttk.Combobox(font_frame, values=font_color_options, textvariable=font_color)
     font_color_dropdown.grid(row=2, column=1, padx=5, pady=5)
 
@@ -39,14 +45,14 @@ def font_color_window():
     # Entry background color dropdown
     entry_bg_color_label = ttk.Label(entry_frame, text="Background Color:")
     entry_bg_color_label.grid(row=0, column=0, padx=5, pady=5)
-    entry_bg_color_options = all_colors
+    entry_bg_color_options = (colors, neon, pastel)
     entry_bg_color_dropdown = ttk.Combobox(entry_frame, values=entry_bg_color_options, textvariable=entry_bg_color)
     entry_bg_color_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
     # Entry text color dropdown
     entry_text_color_label = ttk.Label(entry_frame, text="Text Color:")
     entry_text_color_label.grid(row=1, column=0, padx=5, pady=5)
-    entry_text_color_options = all_colors
+    entry_text_color_options = colors
     entry_text_color_dropdown = ttk.Combobox(entry_frame, values=entry_text_color_options, textvariable=entry_text_color)
     entry_text_color_dropdown.grid(row=1, column=1, padx=5, pady=5)
 
@@ -64,6 +70,7 @@ def apply_font_color():
         font_color_window.destroy()
 		
 def change_font_color():
+    global color_dropdown
     # create the font color window
     font_color_window = tk.Toplevel(root)
     font_color_window.title("Font and Color")
@@ -76,7 +83,7 @@ def change_font_color():
     font_dropdown.grid(row=0, column=1)
 
     # create the color selection dropdown
-    color_names = all_colors
+    color_names = (colors, neon, pastel)
     color_dropdown = ttk.Combobox(font_color_window, values=color_names)
     color_dropdown.set("Select Color")
     color_dropdown.grid(row=1, column=1)

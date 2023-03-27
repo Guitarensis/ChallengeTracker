@@ -5,6 +5,9 @@ from tkinter import ttk
 from globals import root
 from add_image import add_image
 from font_settings import *
+from all_colors import colors
+
+color_library = colors
 
 def menu_bar():
     try:
@@ -28,7 +31,7 @@ def file_menu():
 
 def color_get():
     global all_colors
-    color_names = list(all_colors)
+    color_names = list((colors, neon, pastel))
     try:
         color_dropdown = ttk.Combobox(root, values=color_names)
         color_dropdown.set("Select Color")

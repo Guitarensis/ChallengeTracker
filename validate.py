@@ -1,4 +1,4 @@
-import tkinter as messagebox
+from tkinter import messagebox
 from globals import gear_entries, expected_et_entry
 from dictionary import gear_ratios
 

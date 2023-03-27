@@ -1,15 +1,15 @@
-from main import gear_entries, gear_menu_var, gear_options, gear_ratio_dropdown, validate,  car_dropddown
+from main import gear_entries, gear_menu_var, gear_options, gear_ratio_dropdown, validate
 from dictionary import gear_ratios
 import json
 import os
 import sys
-import tkinter as messagebox
+from tkinter import messagebox
 import tkinter as tk
 
 selected_car = car_dropdown.get()
 
 def add_ratio(gear_ratios, gear_entries):
-    global root
+    global car_dropdown
     if os.path.exists(os.path.join(selected_car, f'{selected_car}.json')):
         with open(os.path.join(f'{selected_car}.json'), 'r') as f:
             json_data = json.load(f)
@@ -111,5 +111,3 @@ def update_ratio_var(value):
         except tk.TclError as e:
             messagebox.showerror("Error", f"An error occurred while creating the OptionMenu: {e}")
             gear_menu = None
-
-root.mainloop()
