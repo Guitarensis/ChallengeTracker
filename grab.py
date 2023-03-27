@@ -1,12 +1,10 @@
 import os
 from main import car_dropdown
-from global import root
-from car_path import *
+from globals import root, cars_dir
 from tkinter import ttk
 
-selected_car = ""
-
 def get_car():
+    global selected_car
     selected_car = car_dropdown.get()  # get the currently selected car from the car dropdown
     car_file = f"{selected_car}.json"  # construct the filename of the JSON file for the selected car
     car_path = os.path.join(cars_dir), car_file)  # get the full path to the JSON file for the selected car

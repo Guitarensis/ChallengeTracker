@@ -1,5 +1,3 @@
-from scapy.layers.l2 import Ether
-from scapy.layers.inet import IP, TCP
 from scapy.sendrecv import sniff
 from process import process_packet
 from tkinter import messagebox
@@ -16,4 +14,3 @@ def grab_packet_data():
         
     except Exception as e:
         messagebox.showerror("Error", f"An error occurred: {str(e)}")
-

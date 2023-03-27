@@ -1,7 +1,8 @@
-from main import gear_entries, gear_menu_var, gear_options, gear_ratio_dropdown, validate
+from main import gear_entries, gear_menu_var, gear_options, gear_ratio_dropdown, validate, car_dropdown
 from dictionary import gear_ratios
 import json
 import os
+from root import root
 import sys
 from tkinter import messagebox
 import tkinter as tk

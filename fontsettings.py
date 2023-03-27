@@ -1,5 +1,5 @@
 from globals import root
-from all_colors import colors
+from allcolors import colors
 from tkinter import tk, font as tkfont
 from tkinter.ttk import ttk
 
@@ -45,7 +45,7 @@ def font_color_window():
     # Entry background color dropdown
     entry_bg_color_label = ttk.Label(entry_frame, text="Background Color:")
     entry_bg_color_label.grid(row=0, column=0, padx=5, pady=5)
-    entry_bg_color_options = (colors, neon, pastel)
+    entry_bg_color_options = (colors)
     entry_bg_color_dropdown = ttk.Combobox(entry_frame, values=entry_bg_color_options, textvariable=entry_bg_color)
     entry_bg_color_dropdown.grid(row=0, column=1, padx=5, pady=5)
 
@@ -59,35 +59,33 @@ def font_color_window():
     # Apply button
     apply_button = ttk.Button(root, text="Apply", command=apply_font_color)
     apply_button.grid(row=3, column=0, padx=10, pady=10)
-
-def apply_font_color():
-    selected_font = font_dropdown.get()
-    selected_color = color_dropdown.get()
-    if selected_font and selected_color:
-        # implementation for applying font and color to labels and entry fields
-        print("Font:", selected_font, "Color:", selected_color)
-        # close the window
-        font_color_window.destroy()
 		
-def change_font_color():
-    global color_dropdown
-    # create the font color window
-    font_color_window = tk.Toplevel(root)
-    font_color_window.title("Font and Color")
-    font_color_window.geometry("300x200")
+    def change_font_color():
+        global color_dropdown
+        # create the font color window
+        font_color_window = tk.Toplevel(root)
+        font_color_window.title("Font and Color")
+        font_color_window.geometry("300x200")
 
-    # create the font selection dropdown
-    font_names = list(tkfont.families())
-    font_dropdown = ttk.Combobox(font_color_window, values=font_names)
-    font_dropdown.set("Select Font")
-    font_dropdown.grid(row=0, column=1)
+        # create the font selection dropdown
+        font_names = list(tkfont.families())
+        font_dropdown = ttk.Combobox(font_color_window, values=font_names)
+        font_dropdown.set("Select Font")
+        font_dropdown.grid(row=0, column=1)
 
-    # create the color selection dropdown
-    color_names = (colors, neon, pastel)
-    color_dropdown = ttk.Combobox(font_color_window, values=color_names)
-    color_dropdown.set("Select Color")
-    color_dropdown.grid(row=1, column=1)
+        # create the color selection dropdown
+        color_dropdown = ttk.Combobox(font_color_window, values=colors)
+        color_dropdown.set("Select Color")
+        color_dropdown.grid(row=1, column=1)
 
-    # create the apply button
-    apply_button = ttk.Button(font_color_window, text="Apply", command=apply_font_color)
-    apply_button.grid(row=2, column=1)
+    def apply_font_color(font_dropdown):
+        selected_font = font_dropdown.get()
+        selected_color = color_dropdown.get()
+        if selected_font and selected_color:
+            # implementation for applying font and color to labels and entry fields
+            print("Font:", selected_font, "Color:", selected_color)
+            # close the window
+            font_color_window.destroy()
+        # create the apply button
+        apply_button = ttk.Button(root, text="Apply", command=lambda: apply_font_color(font_dropdown))
+        apply_button.grid(row=2, column=1)
