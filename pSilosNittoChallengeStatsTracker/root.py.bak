@@ -1,0 +1,38 @@
+from allcolors import colors
+from typing import Optional, Any
+import tkinter as tk
+import tkinter.messagebox as messagebox
+import traceback
+
+root: Optional[tk.Tk] = None
+
+class RootWindow(tk.Tk):
+    def __init__(self, *args: Any, **kwargs: Any):
+        super().__init__(*args, **kwargs)
+        self.configure_window()
+        self.create_widgets()
+
+    def configure_window(self):
+        # Configure main window
+        root_color = colors[0]  # choose a color from the list
+        self.title('Race Stats Tracker')
+        self.geometry('675x325')
+        self.config(bg=root_color)
+
+    def create_widgets(self):
+        # create title bar frame
+        menu_bar = tk.Frame(self, bg=colors[1], relief='raised', bd=2)
+
+        # add title bar to root window using grid
+        menu_bar.grid(row=0, column=0, columnspan=2, sticky="ew")
+        print('Created Title Bar and added to Root window')
+
+if __name__ == '__main__':
+    try:
+        root = RootWindow()
+        root.mainloop()
+    except Exception as e:
+        messagebox.showerror("Error", "An error occurred: " + str(e))
+    finally:
+        # This block is always executed, regardless of whether an exception was raised or not.
+        traceback.print_exc()
