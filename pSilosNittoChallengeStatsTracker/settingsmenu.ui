@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>settingsmenu</class>
+ <widget class="QMainWindow" name="settingsmenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>532</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="fonts">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>131</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="font_tab">
+     <attribute name="title">
+      <string>Fonts</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="font_color_tab">
+     <attribute name="title">
+      <string>Font Colors</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="text_entry_tabs">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>0</y>
+      <width>181</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="text_color_tab">
+     <attribute name="title">
+      <string>Text Colors</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="entry_bg_color_tab">
+     <attribute name="title">
+      <string>Text BG Colors</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="bg_tab">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>151</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="bg_color_tab">
+     <attribute name="title">
+      <string>BG Colors</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="add_custom_image">
+     <attribute name="title">
+      <string>AddImage</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>532</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

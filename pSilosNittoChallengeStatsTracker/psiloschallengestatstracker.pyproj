@@ -1,0 +1,84 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c9630463-1423-4673-8ac9-e6af669f7f5a</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>main.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>psiloschallengestatstracker</Name>
+    <RootNamespace>pSilosNittoChallengeStatsTracker</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <TestFramework>pytest</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="carcombo.py" />
+    <Compile Include="datadump.py" />
+    <Compile Include="dictionary.py" />
+    <Compile Include="gearcombo.py" />
+    <Compile Include="globals.py" />
+    <Compile Include="grabpacketdata.py" />
+    <Compile Include="loadratios.py" />
+    <Compile Include="main.py" />
+    <Compile Include="onexit.py" />
+    <Compile Include="process.py" />
+    <Compile Include="startfunction.py" />
+    <Compile Include="statswidget.py" />
+    <Compile Include="uitopy.py" />
+    <Compile Include="ui_main_window.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="cars\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cars\challenger.json" />
+    <Content Include="cars\charger.json" />
+    <Content Include="cars\civic.json" />
+    <Content Include="cars\ftype.json" />
+    <Content Include="cars\funnycar.json" />
+    <Content Include="cars\lancer.json" />
+    <Content Include="cars\mopar.json" />
+    <Content Include="cars\mustang.json" />
+    <Content Include="cars\ram.json" />
+    <Content Include="cars\rsx.json" />
+    <Content Include="cars\rx8.json" />
+    <Content Include="cars\skyline.json" />
+    <Content Include="cars\srt4.json" />
+    <Content Include="cars\subaru.json" />
+    <Content Include="cars\supra.json" />
+    <Content Include="cars\tfd.json" />
+    <Content Include="cars\viper.json" />
+    <Content Include="main.spec" />
+    <Content Include="main_window.ui" />
+    <Content Include="settingsmenu.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
