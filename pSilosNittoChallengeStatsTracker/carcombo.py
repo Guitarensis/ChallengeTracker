@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
 
-global selected_car
+
 CAR_NAMES = ['Challenger',
              'Charger',
              'Civic',
@@ -20,6 +20,9 @@ CAR_NAMES = ['Challenger',
              'Viper']
 
 
+selected_car = None
+
+
 class CarsWidget(QtWidgets.QWidget):
     def __init__(self, parent):
         super().__init__(parent)
@@ -36,6 +39,5 @@ class CarsWidget(QtWidgets.QWidget):
         self.selected_car = self.car_combo.currentText()
 
     def update_selected_car(self):
-        self.selected_car = self.car_combo.currentText()
         global selected_car
-        selected_car = self.selected_car
+        self.selected_car = self.car_combo.currentText()
