@@ -59,7 +59,7 @@ class GearsWidget(QtWidgets.QWidget):
         self.selected_gear_ratio = self.gear_ratio_combo.currentText()
 
 
-class GearsEntries(self):
+class GearsEntries:
     def __init__(self, parent: QtWidgets.QWidget = None):
         super().__init__(parent)
 
@@ -78,7 +78,14 @@ class GearsEntries(self):
         GearsWidget.final_entry = self.final_entry
         GearsWidget.final_label = self.final_label
         GearsWidget.expected_et_entry = self.expected_et_entry
-
+        self.gear_1_entry = None
+        self.gear_2_entry = None
+        self.gear_3_entry = None
+        self.gear_4_entry = None
+        self.gear_5_entry = None
+        self.gear_6_entry = None
+        self. final_entry = None
+        self.expected_et_entry = None
 class GearRatioCombo(QtWidgets.QWidget):
     def __init__(self, parent: QtWidgets.QWidget = None):
         super().__init__(parent)
