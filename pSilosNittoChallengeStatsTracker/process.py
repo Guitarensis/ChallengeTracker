@@ -1,7 +1,7 @@
 from carcombo import selected_car
-from datetime import time
-from dictionary import gear_ratio_stats_df, gear_ratio_stats_extended_df, gear_ratio_stats
-from gearwidget import selected_gear_ratio
+from cardataframes import dataframes
+from dictionary import gear_ratio_stats_df, gear_ratio_stats_extended_df
+from geardropdown import selected_gear_ratio
 from statswidget import avg_rt_widget, avg_et_widget, avg_mph_widget, mph_diff_widget, rt_diff_widget, et_diff_widget, foul_output_widget, races_ran_widget, total_races_widget
 import datetime
 import json
@@ -23,9 +23,9 @@ for file_name in os.listdir(data_dir):
             key = file_name[:-5]  # remove '.json' extension from key
             dfs[key] = df
 
-def process_packet(gear_ratio_set):
+def process_packet(gear_ratio_set, dataframes):
 
-    with open(df) as f:
+    with open(dataframes[selected_car]) as f:
         data = json.load(f)
         df = pd.DataFrame(data)
 
@@ -36,7 +36,7 @@ def process_packet(gear_ratio_set):
             print('add some ratios to the car first')
         else:
             # Use selected_gear_ratio from dropdown
-            gear_ratio = selected_gear_ratio
+            selected_gear_ratio()
 
     except Exception:
         raise ValueError("Invalid gear ratios")
@@ -73,10 +73,10 @@ def process_packet(gear_ratio_set):
         bracket_time = data(int(round['dialin', 00,000]))
         reaction_time = data(int(round['rt', 0.000]))
         mph = int(round(1320/elapsed_time * 0.681818, 2))
-        gear_ratio_stats = gear_ratio_stats_df.loc[gear_ratio_set]
-        df.at[gear_ratio_set, 'rt'] = gear_ratio_stats[1]
-        df.at[gear_ratio_set, 'et'] = gear_ratio_stats[3]
-        df.at[gear_ratio_set, 'mph'] = gear_ratio_stats[5]
+        gear_ratio_stats = pd.concat([dataframes[selected_car + "_df"], gear_ratio_stats_df.loc[gear_ratio_set]])
+        df.at[gear_ratio_set, 'rt'] = gear_ratio_stats_df[1]
+        df.at[gear_ratio_set, 'et'] = gear_ratio_stats_df[3]
+        df.at[gear_ratio_set, 'mph'] = gear_ratio_stats_df[5]
 
         # Grab mph and elapsed time from last two races of current car
         last_two_races = df[df['car'] == selected_car].tail(2)
@@ -157,7 +157,7 @@ def total_races():
                 total_races += gear_ratio_set[3]
 
     # Add the number of races in the dataframes in memory to the total
-    for df in [gear_ratio_stats_df, gear_ratio_stats_extended_df]:  # replace with your actual dataframe names
+    for df in [gear_ratio_stats_extended_df]:  # replace with your actual dataframe names
         total_races += len(df)
 
     # Update the total races widget
