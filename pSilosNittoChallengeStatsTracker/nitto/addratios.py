@@ -1,16 +1,17 @@
 import itertools
 import pandas as pd
 from carcombo import CarsWidget
-from datas import dataframes
+from cardataframes import dataframes
 from dictionary import gear_ratio_set
 
 
 # Function to save dataframes to disk
 def auto_dump_dataframes(dataframes, selected_car, **kwargs):
-    for selected_car, df in dataframes.items():
+    df_name = selected_car
+    for selected_car, df in dataframes.items(selected_car):
         file_name = f"cars/{selected_car}.json"
-        with open(file_name, "r+") as f:
-            data = json.load(f)
+        with open(file_name, "r+") as file:
+            data = json.load(file)
             data[df_name] = json.loads(df.to_json())
             f.seek(0)
             json.dump(data, f, indent=4)
