@@ -2,6 +2,7 @@ import itertools
 import pandas as pd
 from carcombo import CarsWidget
 from datas import dataframes
+from dictionary import gear_ratio_set
 
 
 # Function to save dataframes to disk
@@ -14,29 +15,6 @@ def auto_dump_dataframes(dataframes, selected_car, **kwargs):
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
-
-# Function to generate gear ratio combinations
-def generate_gear_ratio_combinations(dataframes):
-    # Generate a list of gear ratio sets
-    gear_ratio_sets = selected_car(dataframes.index.tolist())
-
-    # Initialize an empty list to hold the gear ratio combinations
-    gear_ratio_combo = []
-
-    # Iterate over each gear ratio set
-    for gear_ratio_set in gear_ratio_sets:
-
-        # Get the gear ratios for the current gear ratio set
-        gear_ratios = gear_ratios_df.loc[gear_ratio_set].tolist(),
-        final_ratio = final_ratio_df.loc[gear_ratio_set].tolist()
-
-
-        # Generate all possible combinations of gear ratios
-        combinations = list(itertools.combinations(gear_ratios, 2))
-
-        # Append the gear ratio combinations to the gear_ratio_combo list
-        gear_ratio_combo.extend(combinations)
-
 
 def add_ratios(selected_car, final_entry, expected_et_entry):
     """

@@ -4,8 +4,7 @@ from gearwidget import selected_gear_ratio
 from process import process_packet
 from scapy.sendrecv import sniff
 from tkinter import messagebox
-import requests
-import configparser
+
 
 global races_ran
 races_ran = 0
@@ -13,9 +12,9 @@ races_ran = 0
 stats = f'selected_car[selected_gear_ratio][gear_ratio_stats].json'
 
 if selected_gear_ratio in selected_car:
-    gear_ratio_data = selected_car[selected_gear_ratio][gear_ratio_stats][final_ratio][gear_ratio_stats_extended]
+    race_data = selected_car[selected_gear_ratio][gear_ratio_stats][final_ratio][gear_ratio_stats_extended]
 else:
-    gear_ratio_data = selected_car[gear_ratios][gear_ratio_stats][final_ratio][gear_ratio_stats_extended]
+    race_data = selected_car[gear_ratios][gear_ratio_stats][final_ratio][gear_ratio_stats_extended]
 
 def grab_packet():
     try:
