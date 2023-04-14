@@ -8,6 +8,7 @@ gear_ratio_stats_df = None
 gear_ratio_stats_extended_df = None
 gear_ratio_set = None
 
+
 def data_frames():
     gear_ratios = {"gear_ratio_set_1": ["gear1", 0, "gear2", 0, "gear3", 0, "gear4", 0, "gear5", 0, "gear6", 0],
                    "gear_ratio_set_2": ["gear1", 0, "gear2", 0, "gear3", 0, "gear4", 0, "gear5", 0, "gear6", 0],
@@ -30,28 +31,29 @@ def data_frames():
                                                                                   "gear4", "entry", "gear5",
                                                                                   "entry", "gear6", "entry"])
     gear_ratios_df.set_index('gear1', inplace=True)
-    return gear_ratios_df
 
-    final_ratio_df = {"gear_ratio_set_1": ["final", 0, "expected", 0],
-                      "gear_ratio_set_2": ["final", 0, "expected", 0],
-                      "gear_ratio_set_3": ["final", 0, "expected", 0],
-                      "gear_ratio_set_4": ["final", 0, "expected", 0],
-                      "gear_ratio_set_5": ["final", 0, "expected", 0],
-                      "gear_ratio_set_6": ["final", 0, "expected", 0],
-                      "gear_ratio_set_7": ["final", 0, "expected", 0],
-                      "gear_ratio_set_8": ["final", 0, "expected", 0],
-                      "gear_ratio_set_9": ["final", 0, "expected", 0],
-                      "gear_ratio_set_10": ["final", 0, "expected", 0],
-                      "gear_ratio_set_11": ["final", 0, "expected", 0],
-                      "gear_ratio_set_12": ["final", 0, "expected", 0],
-                      "gear_ratio_set_13": ["final", 0, "expected", 0],
-                      "gear_ratio_set_14": ["final", 0, "expected", 0],
-                      "gear_ratio_set_15": ["final", 0, "expected", 0]}
+    def ratios_extended():
+        final_ratio_df = {"gear_ratio_set_1": ["final", 0, "expected", 0],
+                          "gear_ratio_set_2": ["final", 0, "expected", 0],
+                          "gear_ratio_set_3": ["final", 0, "expected", 0],
+                          "gear_ratio_set_4": ["final", 0, "expected", 0],
+                          "gear_ratio_set_5": ["final", 0, "expected", 0],
+                          "gear_ratio_set_6": ["final", 0, "expected", 0],
+                          "gear_ratio_set_7": ["final", 0, "expected", 0],
+                          "gear_ratio_set_8": ["final", 0, "expected", 0],
+                          "gear_ratio_set_9": ["final", 0, "expected", 0],
+                          "gear_ratio_set_10": ["final", 0, "expected", 0],
+                          "gear_ratio_set_11": ["final", 0, "expected", 0],
+                          "gear_ratio_set_12": ["final", 0, "expected", 0],
+                          "gear_ratio_set_13": ["final", 0, "expected", 0],
+                          "gear_ratio_set_14": ["final", 0, "expected", 0],
+                          "gear_ratio_set_15": ["final", 0, "expected", 0]}
 
-    final_ratio_df = pd.DataFrame. from_dict(final_ratio_df, orient='index', columns=["final", "entry",
-                                                                                      "expected", "entry"])
-    final_ratio_df.set_index(['final'], inplace=True)
-    return final_ratio_df
+        final_ratio_df = pd.DataFrame. from_dict(final_ratio_df, orient='index', columns=["final", "entry",
+                                                                                          "expected", "entry"])
+        final_ratio_df.set_index(['final'], inplace=True)
+        return final_ratio_df, gear_ratios_df
+    
 
 
 def stats_dataframe():
@@ -85,29 +87,27 @@ def stats_dataframe():
     gear_ratio_stats_df.set_index(['rt', 'et', 'mph', 'rtdiff', 'etdiff', 'mphdiff'], inplace=True)
     return gear_ratio_stats_df
 
+    gear_ratio_stats_extended_df = {"gear_ratio_set_1": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_2": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_3": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_4": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_5": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_6": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_7": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_8": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_9": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_10": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_11": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_12": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_13": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_14": ["fouls", 0, "racesran", 0],
+                                    "gear_ratio_set_15": ["fouls", 0, "racesran", 0]}
 
-def stats_extended():
-        gear_ratio_stats_extended_df = {"gear_ratio_set_1": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_2": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_3": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_4": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_5": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_6": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_7": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_8": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_9": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_10": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_11": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_12": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_13": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_14": ["fouls", 0, "racesran", 0],
-                                        "gear_ratio_set_15": ["fouls", 0, "racesran", 0]}
-
-        gear_ratio_stats_extended_df = pd.DataFrame.from_dict(gear_ratio_stats_extended_df, orient='index', columns=[
-                                    "fouls", "entry", "racesran", "entry", 60, "entry", 100, "entry", 330, "entry",
-                                    660, "entry"])
-        gear_ratio_stats_extended_df.set_index(['fouls'], inplace=True)
-        return gear_ratio_stats_extended_df
+    gear_ratio_stats_extended_df = pd.DataFrame.from_dict(gear_ratio_stats_extended_df, orient='index', columns=[
+                                "fouls", "entry", "racesran", "entry", 60, "entry", 100, "entry", 330, "entry",
+                                660, "entry"])
+    gear_ratio_stats_extended_df.set_index(['fouls'], inplace=True)
+    return gear_ratio_stats_extended_df
 
 
 dict_list = data_frames()

@@ -1,7 +1,7 @@
 # this script is used to start the application
 from carcombo import selected_car
 from dictionary import load_dataframes, gear_ratio_set
-from geardropdown import GearsWidget, selected_gear_ratio, gear_ratio_combo
+import geardropdownframe as GearsWidget, selected_gear_ratio, gear_ratio_combo
 from IPython.external.qt_for_kernel import QtCore
 import configparser
 import keyboard
@@ -14,13 +14,6 @@ app_list = ['1320v200.exe', '1320v200Scalable.exe', '1320v200Scalable60.exe']
 
 # Load dataframes
 load_dataframes()
-
-# Press Ctrl+Shift+Z to print "Hotkey Detected"
-keyboard.add_hotkey('alt+shift+z', print, args=('Hotkey', 'Detected'))
-
-# Wait for Esc key to be pressed
-keyboard.wait('esc')
-
 
 def check_app_running(app_list):
     for proc in psutil.process_iter(['name']):

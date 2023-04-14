@@ -1,5 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
-
+import tkinter as tk
 
 CAR_NAMES = ['Challenger',
              'Charger',
@@ -19,25 +18,25 @@ CAR_NAMES = ['Challenger',
              'TFD',
              'Viper']
 
-
 selected_car = None
 
 
-class CarsWidget(QtWidgets.QWidget):
+class CarsWidget:
     def __init__(self, parent):
-        super().__init__(parent)
+        self.parent = parent
         global selected_car
         self.selected_car = None
 
-        self.car_combo = QtWidgets.QComboBox(self)
-        self.car_combo.setGeometry(QtCore.QRect(40, 150, 191, 22))
-        self.car_combo.setMaxVisibleItems(20)
-        self.car_combo.setObjectName("car_combo")
-        self.car_combo.addItems(CAR_NAMES)
-        self.car_combo.setCurrentIndex(0)
-        self.car_combo.currentIndexChanged.connect(self.update_selected_car)
-        self.selected_car = self.car_combo.currentText()
+        self.car_combo = tk.StringVar(self.parent)
+        self.car_combo.set(CAR_NAMES[0])
+        self.car_combo.trace("w", self.update_selected_car)
+
+        tk.Label(self.parent, text="Select a car:").pack(pady=5)
+        tk.OptionMenu(self.parent, self.car_combo, *CAR_NAMES).pack(pady=5)
+
+        self.selected_car = self.car_combo.get()
 
     def update_selected_car(self):
         global selected_car
-        self.selected_car = self.car_combo.currentText()
+        self.selected_car = self.car_combo.get()
+        selected_car = self.selected_car

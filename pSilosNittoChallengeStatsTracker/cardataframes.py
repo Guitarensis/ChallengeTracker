@@ -23,7 +23,8 @@ dataframes = {
 
 for key, value in dataframes.items():
     if key.endswith('_df'):
-        value = pd.concat([value, gear_ratios_df, final_ratio_df, gear_ratio_stats_df, gear_ratio_stats_extended_df], axis=1)
+        value = pd.concat([value, gear_ratios_df, final_ratio_df, gear_ratio_stats_df, gear_ratio_stats_extended_df],
+                          axis=1)
         dataframes[key] = value
 
 challenger_df = dataframes['challenger_df']
@@ -44,7 +45,8 @@ supra_df = dataframes['supra_df']
 tfd_df = dataframes['tfd_df']
 viper_df = dataframes['viper_df']
 
-def car_dataframe(dataframes):
+
+def car_dataframe(selected_car):
 
     if selected_car == 'challenger':
         return challenger_df
@@ -88,4 +90,3 @@ def car_dataframe(dataframes):
         print(car_df)
     else:
         print("Sorry, we don't have data for that car.")
-

@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from carcombo import selected_car
-from dictionary import gear_ratios_df, final_ratio_df, gear_ratio_set
+from dictionary import gear_ratios_df, final_ratio_df
 
 
 class GearRatioCombo(QtWidgets.QWidget):

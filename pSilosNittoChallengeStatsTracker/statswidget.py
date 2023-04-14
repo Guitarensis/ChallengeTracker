@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
 
+
 class StatsWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -59,4 +60,3 @@ class StatsWidget(QtWidgets.QWidget):
         self.foul_output_label = QtWidgets.QLabel(self.mainmenu)
         self.foul_output_label.setGeometry(QtCore.QRect(130, 350, 31, 21))
         self.foul_output_label.setObjectName("foul_label")
-
