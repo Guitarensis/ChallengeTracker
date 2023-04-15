@@ -1,11 +1,13 @@
-from cardataframes import dataframes, selected_car
+import json
+import tkinter as tk
+from tkinter import ttk
+from cardataframes import dataframes
 from dictionary import gear_ratio_set, gear_ratios_df, final_ratio_df
 from geardropdown import gear_ratio_combo
-import json
-from pandas import pd
+
 
 # Function to save dataframes to disk
-def auto_dump_dataframes(dataframes, selected_car):
+def auto_dump_dataframes(dataframes, selected_car, **kwargs):
     df_name = selected_car
     for selected_car, df in dataframes.items():
         file_name = f"cars/{selected_car}.json"
@@ -15,6 +17,7 @@ def auto_dump_dataframes(dataframes, selected_car):
             file.seek(0)
             json.dump(data, file, indent=4)
             file.truncate()
+
 
 def add_ratios(selected_car, gear_ratios_df, final_ratio_df, gear_ratio_set):
     """
@@ -32,11 +35,26 @@ def add_ratios(selected_car, gear_ratios_df, final_ratio_df, gear_ratio_set):
     # Save the updated dataframes to disk
     auto_dump_dataframes(dataframes, selected_car)
 
-class AddRatiosWidget():
+
+class AddRatiosWidget(tk.Frame):
     def __init__(self, parent=None):
         super().__init__(parent)
-    def add_ratio_button(self):
+        
+        self.add_ratios_button = ttk.Button(self, text="Add Ratios", command=self.add_ratios)
+        self.add_ratios_button.grid(row=0, column=0, padx=10, pady=10)
 
-        self.add_ratios_button.clicked.connect(lambda: add_ratios(selected_car, gear_ratios_df, final_ratio_df,
-                                                                  gear_ratio_set))
-        return add_ratios()`1
+    def add_ratios(self):
+        add_ratios(selected_car, gear_ratios_df, final_ratio_df, gear_ratio_set)
+
+
+class CarsWidget(tk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.selected_car = tk.StringVar(value=dataframes.keys()[0])
+        
+        self.car_combo = ttk.Combobox(self, values=list(dataframes.keys()), textvariable=self.selected_car)
+        self.car_combo.grid(row=0, column=0, padx=10, pady=10)
+        self.car_combo.bind("<<ComboboxSelected>>", self.update_selected_car)
+
+    def update_selected_car(self, event):
+        self.selected_car.set(self.car_combo.get())

@@ -1,10 +1,9 @@
 # this script is used to start the application
 from carcombo import selected_car
-from dictionary import load_dataframes, gear_ratio_set
+from dictionary import load_dataframes
 import geardropdownframe as GearsWidget, selected_gear_ratio, gear_ratio_combo
 from IPython.external.qt_for_kernel import QtCore
 import configparser
-import keyboard
 import os
 import psutil
 

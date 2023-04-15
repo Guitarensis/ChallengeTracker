@@ -2,23 +2,37 @@ import tkinter as tk
 import psutil
 from scapy.sendrecv import sniff
 from tkinter import messagebox
-from dictionary import data_frames, stats_dataframe
+from dictionary import stats_dataframe
 from carcombo import selected_car
-from geardropdownframe import selected_gear_ratio
 import configparser
 import requests
 import time
-from statsframe import StatsWidget, StatsFrame
+from statsframe import StatsWidget
 
 
-app_list = ['1320v200.exe', '1320v200Scalable.exe', '1320v200Scalable60.exe']
+# Define a function to get the selected car name
+def get_car():
+    return selected_car.get("name")
 
-def check_app_running(app_list):
-    for proc in psutil.process_iter(['name']):
-        if any(app in proc.info['name'] for app in app_list):
-            return True
-    print(f"Errno: {' '.join(app_list)} is not running. Please start it.")
-    return False
+# Define a function to get the last car from the API
+def last_car():
+    # Read the API url from config.ini file
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    username = config['DEFAULT']['username']
+    password = config['DEFAULT']['password']
+
+    # Make a GET request to the API
+    url = f"http://toga-barcode.bnr.la/api/Stats/GetPreviousRaceAndRatios?username={username}&password={password}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        # Extract relevant data from the response
+        data = response.json()
+        last_car_name = data['car']  # get the name of the last car from the API
+        return last_car_name
+    else:
+        raise ValueError(f'Error: Failed to get data from API, status code {response.status_code}')
 
 global races_ran, fouls_ran
 races_ran = 0
@@ -62,7 +76,7 @@ def process():
     with open('scripts', 'config.ini', 'w') as configfile:
         config.write(configfile)
 
-    def display_stats(reaction_time, elapsed_time, bracket_time):
+    def display(reaction_time, elapsed_time, bracket_time):
 
         # Read the API url from config.ini file
         config.read('config.ini')

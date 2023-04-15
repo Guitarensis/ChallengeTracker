@@ -1,5 +1,7 @@
 import pandas as pd
 from dictionary import gear_ratios_df, gear_ratio_stats_df, gear_ratio_stats_extended_df, final_ratio_df
+import processnitto
+
 
 dataframes = {
     'challenger_df': pd.read_json(f'cars/challenger.json'),
@@ -47,46 +49,13 @@ viper_df = dataframes['viper_df']
 
 
 def car_dataframe(selected_car):
-
-    if selected_car == 'challenger':
-        return challenger_df
-    elif selected_car == 'charger':
-        return charger_df
-    elif selected_car == 'civic':
-        return civic_df
-    elif selected_car == 'ftype':
-        return ftype_df
-    elif selected_car == 'funnycar':
-        return funnycar_df
-    elif selected_car == 'lancer':
-        return lancer_df
-    elif selected_car == 'mopar':
-        return mopar_df
-    elif selected_car == 'mustang':
-        return mustang_df
-    elif selected_car == 'ram':
-        return ram_df
-    elif selected_car == 'rsx':
-        return rsx_df
-    elif selected_car == 'rx8':
-        return rx8_df
-    elif selected_car == 'skyline':
-        return skyline_df
-    elif selected_car == 'srt4':
-        return srt4_df
-    elif selected_car == 'subaru':
-        return subaru_df
-    elif selected_car == 'supra':
-        return supra_df
-    elif selected_car == 'tfd':
-        return tfd_df
-    elif selected_car == 'viper':
-        return viper_df
-        car_dict = {'gear_ratios_df': gear_ratios_df, 'final_ratio_df': final_ratio_df,
-                    'gear_ratio_stats_df': gear_ratio_stats_df,
-                    'gear_ratio_stats_extended_df': gear_ratio_stats_extended_df}
-
-        car_df = pd.concat([df for key, df in car_dict.items()], axis=1)
-        print(car_df)
+    if selected_car in dataframes:
+        df = dataframes[selected_car]
+        return pd.concat([df, gear_ratios_df, final_ratio_df, gear_ratio_stats_df, gear_ratio_stats_extended_df],
+                         axis=1)
     else:
         print("Sorry, we don't have data for that car.")
+
+
+selected_car = processnitto.get_car()
+df = car_dataframe(selected_car)
